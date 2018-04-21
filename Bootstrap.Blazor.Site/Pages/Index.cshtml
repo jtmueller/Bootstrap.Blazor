@@ -1,7 +1,48 @@
-﻿@page "/"
+﻿@addTagHelper *, Bootstrap.Blazor
+@using Bootstrap.Blazor
+@page "/"
 
 <h1>Hello, world!</h1>
 
-Welcome to your new app.
+<div class="docs-example">
+    <Container>
+        <Row>
+            <Column>.col</Column>
+        </Row>
+        <Row>
+            <Column>.col</Column>
+            <Column>.col</Column>
+            <Column>.col</Column>
+            <Column>.col</Column>
+        </Row>
+        <Row>
+            <Column xs="3">.col-3</Column>
+            <Column xs="auto">.col-auto - variable width content</Column>
+            <Column xs="3">.col-3</Column>
+        </Row>
+        <Row>
+            <Column xs="6">.col-6</Column>
+            <Column xs="6">.col-6</Column>
+        </Row>
+        <Row>
+            <Column xs="6" sm="4">.col-6 .col-sm-4</Column>
+            <Column xs="6" sm="4">.col-6 .col-sm-4</Column>
+            <Column sm="4">.col-sm-4</Column>
+        </Row>
+        <Row>
+            <Column smCfg=@Column.Cfg(size: 6, order: 2, offset: 1)>.col-sm-6 .col-sm-order-2 .col-sm-offset-2</Column>
+        </Row>
+        <Row>
+            <Column sm="12" mdCfg=@Column.Cfg(size: 8, offset: 2)>.col-sm-12 .col-md-6 .col-md-offset-3</Column>
+        </Row>
+        <Row>
+            <Column smCfg=@Column.Cfg(autoSize: true, offset: 1)>.col-sm .col-sm-offset-1</Column>
+            <Column smCfg=@Column.Cfg(autoSize: true, offset: 1)>.col-sm .col-sm-offset-1</Column>
+        </Row>
+    </Container>
+</div>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<!--
+Same as above, but without all the <blazor-component> elements, renders correctly.
+<div class="docs-example"><div class="container"><div class="row"><div class="col">.col</div></div><div class="row"><div class="col">.col</div><div class="col">.col</div><div class="col">.col</div><div class="col">.col</div></div><div class="row"><div class="col-3">.col-3</div><div class="col-auto">.col-auto - variable width content</div><div class="col-3">.col-3</div></div><div class="row"><div class="col-6">.col-6</div><div class="col-6">.col-6</div></div><div class="row"><div class="col-6 col-sm-4">.col-6 .col-sm-4</div><div class="col-6 col-sm-4">.col-6 .col-sm-4</div><div class="col-sm-4">.col-sm-4</div></div><div class="row"><div class="col-sm-6 order-sm-2 offset-sm-1">.col-sm-6 .col-sm-order-2 .col-sm-offset-2</div></div><div class="row"><div class="col-sm-12 col-md-8 offset-md-2">.col-sm-12 .col-md-6 .col-md-offset-3</div></div><div class="row"><div class="col-sm-auto offset-sm-1">.col-sm .col-sm-offset-1</div><div class="col-sm-auto offset-sm-1">.col-sm .col-sm-offset-1</div></div></div></div>
+-->

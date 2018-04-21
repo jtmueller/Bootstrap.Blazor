@@ -1,0 +1,121 @@
+﻿<div class=@GetClass()>@ChildContent</div>
+
+@functions {
+
+    /// <summary>
+    ///     Creates a config object for use in xsCfg, smCfg, mdCfg, lgCfg, or xlCfg properties.
+    ///     Use explicit parameter names to skip arguments: Column.Cfg(order: 3, offset: 1)
+    /// </summary>
+    public static ColCfg Cfg(bool autoSize = false, int? size = null, int? order = null, int? offset = null) =>
+        new ColCfg(autoSize, size, order, offset);
+
+    public string className { get; set; }
+
+    public string xs { get; set; }
+    public ColCfg? xsCfg { get; set; }
+
+    public string sm { get; set; }
+    public ColCfg? smCfg { get; set; }
+
+    public string md { get; set; }
+    public ColCfg? mdCfg { get; set; }
+
+    public string lg { get; set; }
+    public ColCfg? lgCfg { get; set; }
+
+    public string xl { get; set; }
+    public ColCfg? xlCfg { get; set; }
+
+    public RenderFragment ChildContent { get; set; }
+
+    private string GetClass()
+    {
+        var classes = new List<string> { "col" };
+
+        // xs
+        if (xsCfg.HasValue)
+            AddConfig("xs", classes, xsCfg.Value);
+        else if (!string.IsNullOrWhiteSpace(xs))
+            AddConfig("xs", classes, ParseSize(xs));
+
+        // sm
+        if (smCfg.HasValue)
+            AddConfig("sm", classes, smCfg.Value);
+        else if (!string.IsNullOrWhiteSpace(sm))
+            AddConfig("sm", classes, ParseSize(sm));
+
+        // md
+        if (mdCfg.HasValue)
+            AddConfig("md", classes, mdCfg.Value);
+        else if (!string.IsNullOrWhiteSpace(md))
+            AddConfig("md", classes, ParseSize(md));
+
+        // lg
+        if (lgCfg.HasValue)
+            AddConfig("lg", classes, lgCfg.Value);
+        else if (!string.IsNullOrWhiteSpace(lg))
+            AddConfig("lg", classes, ParseSize(lg));
+
+        // xl
+        if (xlCfg.HasValue)
+            AddConfig("xl", classes, xlCfg.Value);
+        else if (!string.IsNullOrWhiteSpace(xl))
+            AddConfig("xl", classes, ParseSize(xl));
+
+        if (!String.IsNullOrWhiteSpace(className))
+            classes.Add(className);
+
+        return String.Join(" ", classes);
+    }
+
+    private ColCfg ParseSize(string sizeVal)
+    {
+        if (Int32.TryParse(sizeVal, out int size))
+            return Cfg(size: size);
+
+        return Cfg(autoSize: String.Equals(sizeVal, "auto", StringComparison.OrdinalIgnoreCase));
+    }
+
+    private void AddConfig(string prefix, List<string> classes, ColCfg cfg)
+    {
+        bool isXs = prefix == "xs";
+
+        if (cfg.AutoSize)
+        {
+            classes.Add(isXs ? "col-auto" : $"col-{prefix}-auto");
+        }
+        else if (cfg.Size > 0)
+        {
+            classes.Add(isXs ? $"col-{cfg.Size}" : $"col-{prefix}-{cfg.Size}");
+        }
+
+        if (cfg.Order.HasValue)
+        {
+            classes.Add(isXs ? $"col-order-{cfg.Order}" : $"col-{prefix}-order-{cfg.Order}");
+        }
+
+        if (cfg.Offset.HasValue)
+        {
+            classes.Add(isXs ? $"col-offset-{cfg.Offset}" : $"col-{prefix}-offset-{cfg.Offset}");
+        }
+    }
+
+    public readonly struct ColCfg
+    {
+        public bool AutoSize { get; }
+        public int? Size { get; }
+        public int? Order { get; }
+        public int? Offset { get; }
+
+        public ColCfg(bool autoSize, int? size, int? order, int? offset)
+        {
+            AutoSize = autoSize;
+            Size = autoSize ? null : size;
+            Order = order;
+            Offset = offset;
+        }
+
+        public override string ToString() =>
+            $"(Size:{(AutoSize ? "auto" : Size.HasValue ? Size.Value.ToString() : "null")}, Order:{Order}, Offset: {Offset})";
+    }
+}

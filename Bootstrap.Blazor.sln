@@ -3,7 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27617.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bootstrap.Blazor.Site", "Bootstrap.Blazor.Site\Bootstrap.Blazor.Site.csproj", "{95F9783B-4470-4489-A157-0B769A007DED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bootstrap.Blazor.Site", "Bootstrap.Blazor.Site\Bootstrap.Blazor.Site.csproj", "{95F9783B-4470-4489-A157-0B769A007DED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bootstrap.Blazor", "Bootstrap.Blazor\Bootstrap.Blazor.csproj", "{37CCD0AC-1FE4-4A26-BBAA-EB347D79348D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D587F54B-59A6-4167-926E-226DDD3D5B6C}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +22,10 @@ Global
 		{95F9783B-4470-4489-A157-0B769A007DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95F9783B-4470-4489-A157-0B769A007DED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95F9783B-4470-4489-A157-0B769A007DED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37CCD0AC-1FE4-4A26-BBAA-EB347D79348D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37CCD0AC-1FE4-4A26-BBAA-EB347D79348D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37CCD0AC-1FE4-4A26-BBAA-EB347D79348D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37CCD0AC-1FE4-4A26-BBAA-EB347D79348D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,11 @@
+﻿<div class=@Util.ClassNames("row", className, gutters ? null : "no-gutters")>@ChildContent</div>
+
+@functions {
+
+    public string className { get; set; }
+
+    public bool gutters { get; set; } = true;
+
+    public RenderFragment ChildContent { get; set; }
+
+}

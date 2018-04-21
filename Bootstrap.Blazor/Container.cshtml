@@ -1,0 +1,11 @@
+﻿<div class=@Util.ClassNames(fluid ? "container-fluid" : "container", className)>@ChildContent</div>
+
+@functions {
+
+    public string className { get; set; }
+
+    public bool fluid { get; set; }
+
+    public RenderFragment ChildContent { get; set; }
+
+}
