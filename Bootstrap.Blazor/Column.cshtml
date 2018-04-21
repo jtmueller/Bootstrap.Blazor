@@ -89,14 +89,14 @@
             classes.Add(isXs ? $"col-{cfg.Size}" : $"col-{prefix}-{cfg.Size}");
         }
 
-        if (cfg.Order.HasValue)
-        {
-            classes.Add(isXs ? $"col-order-{cfg.Order}" : $"col-{prefix}-order-{cfg.Order}");
-        }
-
         if (cfg.Offset.HasValue)
         {
-            classes.Add(isXs ? $"col-offset-{cfg.Offset}" : $"col-{prefix}-offset-{cfg.Offset}");
+            classes.Add(isXs ? $"offset-{cfg.Offset}" : $"offset-{prefix}-{cfg.Offset}");
+        }
+
+        if (cfg.Order.HasValue)
+        {
+            classes.Add(isXs ? $"order-{cfg.Order}" : $"order-{prefix}-{cfg.Order}");
         }
     }
 
